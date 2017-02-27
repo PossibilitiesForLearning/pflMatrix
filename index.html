@@ -1,0 +1,278 @@
+﻿<html>
+<head>
+    <title>PFL - matrix </title>
+    
+    <link rel="stylesheet" href="./libs/bootstrap.min.css">
+	<link rel="stylesheet" href="./libs/font-awesome.min.css">
+	<link rel="stylesheet" href="./libs/jquery-ui.css">
+
+	
+    <style>
+        html {
+        height: 100%;
+        width: 100%;
+        padding: 40px;		
+        }
+
+
+        .row {
+             width: 100%;
+             //text-align: center; 
+             vertical-align:top;
+        } 
+
+        .block {
+            width: 100px;
+            display: inline-block; 
+            vertical-align:top;
+
+        }
+
+        .spacer {
+            padding: 5px;       
+        }
+
+        .saveBar {
+            padding: 5px;
+            background-color:white;
+        }
+        .saveBar button{
+            padding: 5px;
+        }
+		
+		.matrixTable td{
+			border: 1px solid #ccc;
+			background-color:white;	
+			text-align:center;
+			
+		}			
+
+		.matrixTable th{
+			height: 40px; 
+			white-space: nowrap;
+		}		
+		
+		.matrixTable th > div{
+			-webkit-transform: translate(25px, 51px);
+			-webkit-transform: rotate(315deg);
+			width:35px;		
+			}
+
+		
+		.matrixTable th > div > span{ 
+			border-bottom: 1px solid #ccc
+			
+		}		
+
+		/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}​
+    </style>
+
+    <style>
+        body {
+            font-size:11px !important;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body ng-controller="pflMatrixController" ng-app='pflMatrixApp'>
+	<div id="helpDialog" title="Pfl Matrix - Instructions" style="display:none;background-color:beige">
+			<ol ng-show="language=='default_en'">
+			<li>Print a copy of the Brilliant Behaviors to record the behaviors that appear. Use either an individual checklist, group checklist, or a copy of the Guide.</li>
+			<li>Record the information required information about the student and activity or activities at the top of the form.</li>
+			<li>Observe a student while she or he is engaged in a challenging activity in an area of strength or interest. Click here to see a description of suitable activities.</li>
+			<li>Put a check to the left of each Behavior the student demonstrates frequently, intensely and consistently.</li>
+			<li>Transfer the student information and behaviors observed from the Brilliant Behaviors form to the Guide online. The Guide will change the Xs to the right of each behavior you check into vs.</li>
+			<li>The Guide will also highlight the differentiation strategies to emphasize for this student when she or he is working in this area of strength or interest.</li>
+			<li>The definition of each strategy will appear when the cursor rests on it. Read the definitions for each of the strategies recommended by the Guide. Do they seem appropriate?</li>
+		</ol>
+
+			<ol ng-show="language=='kids_en'">
+			<li>Fill in the information at the top of the form.</li>
+			<li>Read the list of Behaviors in the form. Let the cursor rest on the name of a behavior and a description of it will appear. Click here if you want more information about any of them.</li>
+			<li>Do you experience any of those behaviors when you are learning something challenging about a topic you love? Put a check mark (v) in the column to the left of each Behavior that is consistently, intensely true of you while you’re learning something fascinating.</li>
+			<li>Now look at the names of the strategies the Guide is recommending for you. They will be highlighted in green. A brief definition for each strategy will appear if you put your cursor over the name. Click on the name if you want more information and examples. The Guide thinks activities like that involve the strategies highlighted in green will challenge you in ways you’ll like when you are learning about your favorite topic. Do you agree with some or all of what the Guide has recommended?</li>
+			<li>Share your Guide and the results with your teacher.</li>			
+			</ol>
+	</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+	<div class="row">
+		<div class="col-sm-6">
+			Differentiation Strategy Guide
+			<i class="fa fa-info-circle" aria-hidden="true" ng-click="showHelp();"></i>
+		</div>
+		<div class="col-sm-6">			
+			<div style="float:right;">
+				Teacher/Parent Version
+				<label class="switch" style="top:7px;">
+					<input type="checkbox" ng-model="isStudentText" ng-click="setLanguage(isStudentText);">
+					<div class="slider round"></div>
+				</label>
+				Student Version				
+			</div>
+		</div>		
+	</div>
+  </div>  
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+	<div class="row">
+		<div class="col-sm-6">Information</div>
+		<div class="col-sm-6">			
+			<div style="float:right;" ng-init="showInfoForm=true;">
+				<i class="fa fa-caret-up" aria-hidden="true" ng-show="showInfoForm" ng-click="showInfoForm=false;"></i>
+				<i class="fa fa-caret-down" aria-hidden="true" ng-show="!showInfoForm" ng-click="showInfoForm=true;"></i>
+			</div>
+		</div>		
+	</div>
+  </div>
+  <div class="panel-body" ng-show="showInfoForm">
+	<div class='row'>
+		<div class='col-sm-4'>
+			<div class="form-group row">
+				<label for="pflName" class="col-form-label">Name</label>
+				<input class="form-control" type="text" id="pflName" ng-model="pflName">
+			</div>
+		</div>
+		<div class='col-sm-4'>
+			<div class="form-group row">
+				<label for="pflGrade" class="col-form-label">Grade</label>
+				<input class="form-control" type="number" id="pflGrade" ng-model="pflGrade">
+			</div>
+		</div>		
+		<div class='col-sm-4'>
+			<div class="form-group row">
+				<label for="pflDate" class="col-form-label">Date</label>
+				<input class="form-control" type="date" id="pflDate" ng-model="pflDate">
+			</div>
+		</div>				
+	</div>
+	<div class='row'>
+		<div class='col-sm-12'>
+			<div class="form-group row">
+				<label for="pflStrengths" class="col-form-label" ng-show="language=='default_en'">Strengths:</label>
+				<label for="pflStrengths" class="col-form-label" ng-show="language=='kids_en'">Things you LOVE to learn about: </label>
+				<textarea class="form-control span6" rows="3" id="pflStrengths" ng-model="pflStrengths"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class='row' ng-show="language=='default_en'">  
+		<div class='col-sm-12'>
+			<div class="form-group row">
+				<label for="pflEvidence" class="col-form-label" >Dates and descriptions of activities observed:</label>
+				<textarea class="form-control span6" rows="3" id="pflEvidence" ng-model="pflEvidence"></textarea>
+			</div>
+		</div>
+	</div>	
+    
+  </div>
+</div>
+	
+	<div class='row' style='height:100px;'>&nbsp;</div>
+	<div class='row' height='25px'>
+		<div class='col-sm-10' style="padding-right: 0px;">
+			<table class="matrixTable" >
+				<tr>
+					<th>&nbsp;</th>
+					<th ng-repeat="diffOpt in diffOptions"><div><span style=" font-size:11px;">{{diffOpt.title}}</span></div></th>
+				</tr>
+				<tr ng-repeat="indicator in indicators">
+					<td title="{{indicator.descriptions[language]}}" style="text-align:left;border: 0px; font-size:11px;">
+						<input type="checkbox" ng-model="indicator.isSelected" ng-change="updateRank(indicator);">{{indicator.title}}
+					</td>	
+					<td ng-repeat="diffOpt in diffOptions" ng-style="{'background-color':indicator.isSelected && setIndicatorLocation(indicator, diffOpt) ?'green':'white'}">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOpt)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOpt)" class="fa fa-times"></i>
+					</td>
+				</tr>
+				<tr>
+					<td style=" font-size:11px;">Ranking</td>	
+					<td ng-repeat="diffOpt in diffOptions" style="background-color:#eee; font-size:11px;">{{diffOptRankings[diffOpt.id].displayRank}}</td>
+				</tr>		
+			</table>		
+		</div>
+		<div class='col-sm-2' style="padding-right: 0px; padding-left: 0px;">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					Suggested Strategies
+				</div>
+				<div class="panel-body" style="padding-left:0px;">
+					<ul>
+						<li ng-repeat="diffOpts in topDiffOpts">{{diffOpts}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>		
+	</div>
+</body>
+
+<script src="./libs/jquery.min.js"></script>
+<script src="./libs/bootstrap.min.js"></script>
+<script src="./libs/angular_1.3.9.js"></script>
+<script src="./libs/jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="./static.content/indicator.matrix.js"></script>
+<script type="text/javascript" src="./app/pflMatrixApp.js"></script>
+<script type="text/javascript" src="./app/pflMatrixApp.controller.js"></script>
+<script type="text/javascript" src="./app/pflMatrixApp.service.js"></script>
+
+</html>
