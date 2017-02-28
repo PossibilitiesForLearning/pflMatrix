@@ -155,11 +155,11 @@ input:checked + .slider:before {
 <div class="panel panel-default">
   <div class="panel-heading">
 	<div class="row">
-		<div class="col-sm-6">
+		<div class="col-sm-3">
 			Differentiation Strategy Guide
-			<i class="fa fa-info-circle" aria-hidden="true" ng-click="showHelp();"></i>
+			<i class="fa fa-info-circle" aria-hidden="true" ng-click="showHelp();"></i>			
 		</div>
-		<div class="col-sm-6">			
+		<div class="col-sm-4">			
 			<div style="float:right;">
 				Teacher/Parent Version
 				<label class="switch" style="top:7px;">
@@ -169,6 +169,14 @@ input:checked + .slider:before {
 				Student Version				
 			</div>
 		</div>		
+		<div class="col-sm-5">			
+			<div style="float:right;">
+				<button class="btn btn-info btn-sm fa fa-save" ng-click="savePflMatrix();"></button>
+				<label for="file-input" class="btn btn-info btn-sm fa fa-folder-open" ></label>				
+				<input type="file" id="file-input" style="display:none;">
+				<!-- button class="btn btn-info btn-sm fa fa-print" ng-click="printPflMatrix();"></button -->
+			</div>
+		</div>				
 	</div>
   </div>  
 </div>
@@ -190,19 +198,19 @@ input:checked + .slider:before {
 		<div class='col-sm-4'>
 			<div class="form-group row">
 				<label for="pflName" class="col-form-label">Name</label>
-				<input class="form-control" type="text" id="pflName" ng-model="pflName">
+				<input class="form-control" type="text" id="pflName" ng-model="userInfo.pflName">
 			</div>
 		</div>
 		<div class='col-sm-4'>
 			<div class="form-group row">
 				<label for="pflGrade" class="col-form-label">Grade</label>
-				<input class="form-control" type="number" id="pflGrade" ng-model="pflGrade">
+				<input class="form-control" type="number" id="pflGrade" ng-model="userInfo.pflGrade">
 			</div>
 		</div>		
 		<div class='col-sm-4'>
 			<div class="form-group row">
 				<label for="pflDate" class="col-form-label">Date</label>
-				<input class="form-control" type="date" id="pflDate" ng-model="pflDate">
+				<input class="form-control" type="date" id="pflDate" ng-model="userInfo.pflDate">
 			</div>
 		</div>				
 	</div>
@@ -211,7 +219,7 @@ input:checked + .slider:before {
 			<div class="form-group row">
 				<label for="pflStrengths" class="col-form-label" ng-show="language=='default_en'">Strengths:</label>
 				<label for="pflStrengths" class="col-form-label" ng-show="language=='kids_en'">Things you LOVE to learn about: </label>
-				<textarea class="form-control span6" rows="3" id="pflStrengths" ng-model="pflStrengths"></textarea>
+				<textarea class="form-control span6" rows="3" id="pflStrengths" ng-model="userInfo.pflStrengths"></textarea>
 			</div>
 		</div>
 	</div>
@@ -219,7 +227,7 @@ input:checked + .slider:before {
 		<div class='col-sm-12'>
 			<div class="form-group row">
 				<label for="pflEvidence" class="col-form-label" >Dates and descriptions of activities observed:</label>
-				<textarea class="form-control span6" rows="3" id="pflEvidence" ng-model="pflEvidence"></textarea>
+				<textarea class="form-control span6" rows="3" id="pflEvidence" ng-model="userInfo.pflEvidence"></textarea>
 			</div>
 		</div>
 	</div>	
@@ -269,6 +277,7 @@ input:checked + .slider:before {
 <script src="./libs/bootstrap.min.js"></script>
 <script src="./libs/angular_1.3.9.js"></script>
 <script src="./libs/jquery-ui.min.js"></script>
+<script src="./libs/alasql.min.js"></script>
 
 <script type="text/javascript" src="./static.content/indicator.matrix.js"></script>
 <script type="text/javascript" src="./app/pflMatrixApp.js"></script>
