@@ -174,7 +174,7 @@ input:checked + .slider:before {
 				<button class="btn btn-info btn-sm fa fa-save" ng-click="savePflMatrix();"></button>
 				<label for="file-input" class="btn btn-info btn-sm fa fa-folder-open" ></label>				
 				<input type="file" id="file-input" style="display:none;">
-				<!-- button class="btn btn-info btn-sm fa fa-print" ng-click="printPflMatrix();"></button -->
+				<button class="btn btn-info btn-sm fa fa-print" ng-click="printPflMatrix();"></button>
 			</div>
 		</div>				
 	</div>
@@ -235,40 +235,162 @@ input:checked + .slider:before {
   </div>
 </div>
 	
-	<div class='row' style='height:100px;'>&nbsp;</div>
+	<div class='row' style='height:10px;'>&nbsp;</div>
 	<div class='row' height='25px'>
-		<div class='col-sm-10' style="padding-right: 0px;">
+		<div class='col-sm-12' style="padding-right: 0px;">
+			<style>				
+				.pflDiffGroups{
+					text-align:center;height:25px;vertical-align:top
+				}
+				.pflDiffTitles{
+					font-size:11px
+				}
+				.pflCont {color:blue;}
+				.pflProc {color:cadetblue;}
+				.pflProd {color:dodgerblue;}
+			</style>
 			<table class="matrixTable" >
 				<tr>
+					<th colspan=23 class="pflDiffGroups">
+						Suggested Differentiation Strategies
+						<ul style="display:inline;">
+							<li style="display:inline;font-size:11px;padding-right:10px;" ng-repeat="diffOpts in topDiffOpts">{{diffOpts}}</li>
+						</ul>
+					</th>
+				</tr>
+				<tr>
 					<th>&nbsp;</th>
-					<th ng-repeat="diffOpt in diffOptions"><div><span style=" font-size:11px;">{{diffOpt.title}}</span></div></th>
+					<th colspan=7 class="pflDiffGroups pflCont">Content</th>
+					<th colspan=10 style="height:80px;" class="pflDiffGroups pflProc">Process</th>
+					<th colspan=5 class="pflDiffGroups pflProd">Product</th>
+				</tr>
+				<tr>
+					<th>Behaviors</th>
+					
+					<th><div><span class="pflDiffTitles pflCont">{{diffOptions.contAbs.title}}</span></div></th>					
+					<th><div><span class="pflDiffTitles pflCont">{{diffOptions.contComp.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflCont">{{diffOptions.extTop.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflCont">{{diffOptions.livLiv.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflCont">{{diffOptions.orgLivVal.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflCont">{{diffOptions.relLiTop.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflCont">{{diffOptions.selSelCont.title}}</span></div></th>
+					
+					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.cmplxThink.title}}</span></div></th>					
+					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.expMeths.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.groupInt.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.indvPurs.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.inqBasLea.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.opEnd.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.pacProc.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.reasRefl.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.selSelProc.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.procVariety.title}}</span></div></th>
+					
+					<th><div><span class="pflDiffTitles pflProd">{{diffOptions.authAud.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflProd">{{diffOptions.feedAssProd.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflProd">{{diffOptions.selSelProd.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflProd">{{diffOptions.transProd.title}}</span></div></th>
+					<th><div><span class="pflDiffTitles pflProd">{{diffOptions.prodVariety.title}}</span></div></th>
+					
 				</tr>
 				<tr ng-repeat="indicator in indicators">
 					<td title="{{indicator.descriptions[language]}}" style="text-align:left;border: 0px; font-size:11px;">
 						<input type="checkbox" ng-model="indicator.isSelected" ng-change="updateRank(indicator);">{{indicator.title}}
-					</td>	
-					<td ng-repeat="diffOpt in diffOptions" ng-style="{'background-color':indicator.isSelected && setIndicatorLocation(indicator, diffOpt) ?'green':'white'}">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOpt)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOpt)" class="fa fa-times"></i>
 					</td>
+					<td class="pflCont">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.contAbs)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.contAbs)" class="fa fa-times"></i>
+					</td>
+					<td class="pflCont">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.contComp)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.contComp)" class="fa fa-times"></i>
+					</td>
+					<td class="pflCont">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.extTop)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.extTop)" class="fa fa-times"></i>
+					</td>
+					<td class="pflCont">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.livLiv)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.livLiv)" class="fa fa-times"></i>
+					</td>
+					<td class="pflCont">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.orgLivVal)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.orgLivVal)" class="fa fa-times"></i>
+					</td>					
+					<td class="pflCont">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.relLiTop)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.relLiTop)" class="fa fa-times"></i>
+					</td>					
+					<td class="pflCont">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.selSelCont)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.selSelCont)" class="fa fa-times"></i>
+					</td>										
+					<td class="pflProc">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.cmplxThink)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.cmplxThink)" class="fa fa-times"></i>
+					</td>															
+					<td class="pflProc">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.expMeths)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.expMeths)" class="fa fa-times"></i>
+					</td>															
+					<td class="pflProc">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.groupInt)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.groupInt)" class="fa fa-times"></i>
+					</td>															
+					<td class="pflProc">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.indvPurs)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.indvPurs)" class="fa fa-times"></i>
+					</td>															
+					<td class="pflProc">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.inqBasLea)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.inqBasLea)" class="fa fa-times"></i>
+					</td>															
+					<td class="pflProc">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.opEnd)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.opEnd)" class="fa fa-times"></i>
+					</td>															
+					<td class="pflProc">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.pacProc)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.pacProc)" class="fa fa-times"></i>
+					</td>															
+					<td class="pflProc">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.reasRefl)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.reasRefl)" class="fa fa-times"></i>
+					</td>															
+					<td class="pflProc">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.selSelProc)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.selSelProc)" class="fa fa-times"></i>
+					</td>															
+					<td class="pflProc">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.procVariety)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.procVariety)" class="fa fa-times"></i>
+					</td>																				
+					<td class="pflProd">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.authAud)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.authAud)" class="fa fa-times"></i>
+					</td>																									
+					<td class="pflProd">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.feedAssProd)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.feedAssProd)" class="fa fa-times"></i>
+					</td>																									
+					<td class="pflProd">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.selSelProd)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.selSelProd)" class="fa fa-times"></i>
+					</td>																									
+					<td class="pflProd">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.transProd)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.transProd)" class="fa fa-times"></i>
+					</td>																									
+					<td class="pflProd">
+						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.prodVariety)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.prodVariety)" class="fa fa-times"></i>
+					</td>																														
 				</tr>
 				<tr>
 					<td style=" font-size:11px;">Ranking</td>	
 					<td ng-repeat="diffOpt in diffOptions" style="background-color:#eee; font-size:11px;">{{diffOptRankings[diffOpt.id].displayRank}}</td>
 				</tr>		
 			</table>		
-		</div>
-		<div class='col-sm-2' style="padding-right: 0px; padding-left: 0px;">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					Suggested Strategies
-				</div>
-				<div class="panel-body" style="padding-left:0px;">
-					<ul>
-						<li ng-repeat="diffOpts in topDiffOpts">{{diffOpts}}</li>
-					</ul>
-				</div>
-			</div>
 		</div>		
 	</div>
 </body>
@@ -278,6 +400,8 @@ input:checked + .slider:before {
 <script src="./libs/angular_1.3.9.js"></script>
 <script src="./libs/jquery-ui.min.js"></script>
 <script src="./libs/alasql.min.js"></script>
+<script src="./libs/moment.min.js"></script>
+<script src="./libs/jspdf.min.js"></script>
 
 <script type="text/javascript" src="./static.content/indicator.matrix.js"></script>
 <script type="text/javascript" src="./app/pflMatrixApp.js"></script>
