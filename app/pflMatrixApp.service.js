@@ -3,6 +3,7 @@ app.service("pflMatrixService", function ($http, $q) {
 		//public api
 		return({
 			getIndicatorList:getIndicatorList,
+			getOrderedIndicatorList:getOrderedIndicatorList,
 			getDifferentiationOptions:getDifferentiationOptions,
 			initDifferentiationOptionsRanking:initDifferentiationOptionsRanking,
 			updateDifferentiationOptionsRanking:updateDifferentiationOptionsRanking
@@ -10,8 +11,23 @@ app.service("pflMatrixService", function ($http, $q) {
 		
 		
 		function getIndicatorList(){
-			return pflMatrix.indicators;
-		}	
+			return pflMatrix.indicators;			
+		}
+
+		function getOrderedIndicatorList(){
+			//very hack way to do this....
+			var orderedIndicators = [];
+			for(var i=0; i < Object.keys(pflMatrix.indicators).length;i++){
+				orderedIndicators.push({});
+			}
+			for(var diffInd in pflMatrix.indicators){
+				orderedIndicators[pflMatrix.indicators[diffInd].dispOrder]=diffInd;
+			}
+			
+			return orderedIndicators;
+			
+		}
+		
 		function getDifferentiationOptions(){
 			return pflMatrix.diffOptions;
 		}

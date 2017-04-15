@@ -293,97 +293,97 @@ input:checked + .slider:before {
 					<th><div><span class="pflDiffTitles pflProd">{{diffOptions.prodVariety.title}}</span></div></th>
 					
 				</tr>
-				<tr ng-repeat="indicator in indicators">
-					<td title="{{indicator.descriptions[language]}}" style="text-align:left;border: 0px; font-size:11px;">
-						<input type="checkbox" ng-model="indicator.isSelected" ng-change="updateRank(indicator);">{{indicator.title}}
+				<tr ng-repeat="orderedIndic in orderdIndicators">
+					<td title="{{indicators[orderedIndic].descriptions[language]}}" style="text-align:left;border: 0px; font-size:11px;">
+						<input type="checkbox" ng-model="indicators[orderedIndic].isSelected" ng-change="updateRank(indicators[orderedIndic]);">{{indicators[orderedIndic].title}}
 					</td>
 					<td class="pflCont">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.contAbs)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.contAbs)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.contAbs)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.contAbs)" class="fa fa-times"></i>
 					</td>
 					<td class="pflCont">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.contComp)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.contComp)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.contComp)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.contComp)" class="fa fa-times"></i>
 					</td>
 					<td class="pflCont">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.extTop)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.extTop)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.extTop)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.extTop)" class="fa fa-times"></i>
 					</td>
 					<td class="pflCont">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.livLiv)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.livLiv)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.livLiv)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.livLiv)" class="fa fa-times"></i>
 					</td>
 					<td class="pflCont">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.orgLivVal)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.orgLivVal)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.orgLivVal)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.orgLivVal)" class="fa fa-times"></i>
 					</td>					
 					<td class="pflCont">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.relLiTop)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.relLiTop)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.relLiTop)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.relLiTop)" class="fa fa-times"></i>
 					</td>					
 					<td class="pflCont">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.selSelCont)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.selSelCont)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.selSelCont)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.selSelCont)" class="fa fa-times"></i>
 					</td>										
 					<td class="pflProc">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.cmplxThink)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.cmplxThink)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.cmplxThink)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.cmplxThink)" class="fa fa-times"></i>
 					</td>															
 					<td class="pflProc">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.expMeths)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.expMeths)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.expMeths)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.expMeths)" class="fa fa-times"></i>
 					</td>															
 					<td class="pflProc">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.groupInt)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.groupInt)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.groupInt)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.groupInt)" class="fa fa-times"></i>
 					</td>															
 					<td class="pflProc">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.indvPurs)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.indvPurs)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.indvPurs)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.indvPurs)" class="fa fa-times"></i>
 					</td>															
 					<td class="pflProc">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.inqBasLea)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.inqBasLea)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.inqBasLea)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.inqBasLea)" class="fa fa-times"></i>
 					</td>															
 					<td class="pflProc">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.opEnd)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.opEnd)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.opEnd)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.opEnd)" class="fa fa-times"></i>
 					</td>															
 					<td class="pflProc">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.pacProc)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.pacProc)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.pacProc)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.pacProc)" class="fa fa-times"></i>
 					</td>															
 					<td class="pflProc">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.reasRefl)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.reasRefl)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.reasRefl)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.reasRefl)" class="fa fa-times"></i>
 					</td>															
 					<td class="pflProc">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.selSelProc)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.selSelProc)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.selSelProc)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.selSelProc)" class="fa fa-times"></i>
 					</td>															
 					<td class="pflProc">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.procVariety)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.procVariety)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.procVariety)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.procVariety)" class="fa fa-times"></i>
 					</td>																				
 					<td class="pflProd">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.authAud)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.authAud)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.authAud)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.authAud)" class="fa fa-times"></i>
 					</td>																									
 					<td class="pflProd">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.feedAssProd)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.feedAssProd)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.feedAssProd)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.feedAssProd)" class="fa fa-times"></i>
 					</td>																									
 					<td class="pflProd">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.selSelProd)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.selSelProd)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.selSelProd)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.selSelProd)" class="fa fa-times"></i>
 					</td>																									
 					<td class="pflProd">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.transProd)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.transProd)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.transProd)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.transProd)" class="fa fa-times"></i>
 					</td>																									
 					<td class="pflProd">
-						<i ng-show="indicator.isSelected && setIndicatorLocation(indicator, diffOptions.prodVariety)" class="fa fa-check-circle-o"></i>
-						<i ng-show="!indicator.isSelected && setIndicatorLocation(indicator, diffOptions.prodVariety)" class="fa fa-times"></i>
+						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.prodVariety)" class="fa fa-check-circle-o"></i>
+						<i ng-show="!indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.prodVariety)" class="fa fa-times"></i>
 					</td>																														
 				</tr>
 				<tr>

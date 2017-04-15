@@ -1,66 +1,66 @@
 var pflMatrix={
 	indicators:{
-		ixSH:{id:'ixSH', title:'Humor', descriptions:{
+		ixSH:{id:'ixSH', title:'Humor', dispOrder:0, descriptions:{
 							default_en:"Exceptionally keen sense of the comical, the bizarre, or absurd.",
 							kids_en:"I get totally silly about these things. My sense of humor goes wild."
 							}
 		},
-		ixEIC:{id:'ixEIC',title:'Imagination and creativity', descriptions:{
+		ixEIC:{id:'ixEIC',title:'Imagination and creativity', dispOrder:1, descriptions:{
 							default_en:"Extraordinary ability to use ideas, processes, materials or anything else in ingenious, flexible or surprising ways.",
 							kids_en:"I have a wild imagination. I say things, do things, think things, feel things in a way other kids don't."
 							}
 		},
-		ixPIM:{id:'ixPIM', title:'Inquiry', descriptions:{
+		ixPIM:{id:'ixPIM', title:'Inquiry',  dispOrder:2, descriptions:{
 							default_en:"Probes deeply while exploring ideas &amp; topics; asks deep questions; experiments with events, ideas, feelings, sounds, symbols, movement, etc.",
 							kids_en:"I need to find answers to my own questions more than the teacher's questions. I want to test my ideas to see what might work and why."
 							}
 		},
-		ixTM:{id:'ixTM', title:'Memory and processing', descriptions:{
+		ixTM:{id:'ixTM', title:'Memory and processing',  dispOrder:3, descriptions:{
 							default_en:"Tremendous capacity for dealing with large amounts of information and skills",
 							kids_en:"I know lots more about this than any other kid my age."
 							}
 		},
-		ixISA:{id:'ixISA',title:'Sensitivity', descriptions:{
+		ixISA:{id:'ixISA',title:'Sensitivity',  dispOrder:4 ,descriptions:{
 							default_en:"Unusually aware of or responsive to her/his own experiences and feelings and/or those of others.",
 							kids_en:"I'm very sensitive. My feelings about these kinds of activities and the people I do them with are very strong."
 							}
 		},
-		ixGC:{id:'ixGC',title:'Expressiveness', descriptions:{
+		ixGC:{id:'ixGC',title:'Expressiveness',  dispOrder:5, descriptions:{
 							default_en:"Extraordinary ability to communicate meaning or emotion through words, actions, symbols, sounds, or media.",
 							kids_en:"I can explain my ideas very clearly. My explanations may be in words and numbers, but they might also be in actions or symbols or music or movement."
 							}
 		},
-		ixRTW:{id:'ixRTW',title:'Reasoning', descriptions:{
+		ixRTW:{id:'ixRTW',title:'Reasoning',  dispOrder:6, descriptions:{
 							default_en:"Loves to think; thinks things through, considers implications or alternatives; rich, flexible, highly conscious, analytical or logical thought. Thinking is not necessarily directed toward a goal or solution.",
 							kids_en:"I love thinking about these kinds of things. I like to come up with lots of ideas and then predict the consequences before trying to do them."
 							}
 		},		
-		ixSCP:{id:'ixSCP',title:'Problem-solving', descriptions:{
+		ixSCP:{id:'ixSCP',title:'Problem-solving',  dispOrder:7, descriptions:{
 							default_en:"Outstanding ability to find systematic solutions to problems; is able to invent and monitor many paths to a goal; seeks out challenging problems.",
 							kids_en:"I love to solve hard, messy problems by inventing and checking lots of different solutions. I live for the challenge!"
 							}
 		},		
-		ixIU:{id:'ixIU',title:'Intuition', descriptions:{
+		ixIU:{id:'ixIU',title:'Intuition',  dispOrder:8, descriptions:{
 							default_en:"Suddenly discovers connections or deeper meanings without conscious awareness of reasoning or thought.",
 							kids_en:"I see connections between ideas that other kids don't. I can't explain how I know -- I just know!"
 							}
 		},		
-		ixLE:{id:'ixLE',title:'Learning', descriptions:{
+		ixLE:{id:'ixLE',title:'Learning',  dispOrder:9, descriptions:{
 							default_en:"Extremely able to grasp and use sophisticated new understandings quickly and easily.",
 							kids_en:"I love learning the tough stuff. It is much easier for me to learn it is for other kids my age."
 							}
 		},		
-		ixAPI:{id:'ixAPI',title:'Interests', descriptions:{
+		ixAPI:{id:'ixAPI',title:'Interests',  dispOrder:10, descriptions:{
 							default_en:"Advanced, intensely focused curiousity; passionate; may focus on unusual topics; interest is sometimes fleeting but always intense.",
 							kids_en:"I absolutely love this stuff, even if other kids think it is weird."
 							}
 		},				
-		ixMEC:{id:'ixMEC',title:'Moral and ethical concerns', descriptions:{
+		ixMEC:{id:'ixMEC',title:'Moral and ethical concerns',  dispOrder:11, descriptions:{
 							default_en:"Extreme need for fairness and justice; will take action to resolve injustices; deeply concerned with the consequences of her or his actions.",
 							kids_en:"I need to believe in an idea before doing anything about it. If it isn't fair to everyone or if it just feels wrong, I won't do it."
 							}
 		},				
-		ixHMP:{id:'ixHMP',title:'Motivation', descriptions:{
+		ixHMP:{id:'ixHMP',title:'Motivation',  dispOrder:12, descriptions:{
 							default_en:"Persistent, intense need to know, do, feel, create, or understand.",
 							kids_en:"I want MORE! Once I start I can't shut my mind off. I can&apos;t quit even when I run out of time in class."
 							}
@@ -173,7 +173,7 @@ var pflMatrix={
 					}
 		},						
 		prodVariety:{
-			id:"prodVariety",title:"Variety", type: "product", indicators:['ixTM','ixGC','ixSCP','ixRTW','ixLE','ixMEC'], refId:450, description:{
+			id:"prodVariety",title:"Variety", type: "product", indicators:['ixEIC','ixPIM','ixGC','ixSCP','ixIU','ixLE','ixAPI','ixHMP'], refId:450, description:{
 						default_en:"Students learn about and use different types of production techniques and media throughout the school year or term. They should also learn to select an appropriate format for the audience and content."
 					}
 		}
