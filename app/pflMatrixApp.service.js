@@ -39,34 +39,36 @@ app.service("pflMatrixService", function ($http, $q) {
 				diffOptsRank[diffOpt].availIndicators=angular.copy(pflMatrix.diffOptions[diffOpt].indicators); 
 				diffOptsRank[diffOpt].selectedIndicators=[];
 				diffOptsRank[diffOpt].rank=0; //defaults to all being possible options
-				diffOptsRank[diffOpt].displayRank=1; 
+				diffOptsRank[diffOpt].displayRank=''; 
 			}
 			//console.log('diffOptsRank',diffOptsRank);
 			return diffOptsRank;
 		}		
 	
 		function updateDifferentiationOptionsRanking(selectedIndicator, isSelected, diffOptsRank){
-			var ranksClusters=[];
+			var ranksClusters=[];						
+			//console.log("updateDifferentiationOptionsRanking",selectedIndicator,isSelected);
 			for(var diffOpt in diffOptsRank){
-				if(diffOptsRank[diffOpt].availIndicators.indexOf(selectedIndicator)>=0){
-					var index = diffOptsRank[diffOpt].selectedIndicators.indexOf(selectedIndicator);
-					if(isSelected && index<0){
+				if(diffOptsRank[diffOpt].availIndicators.indexOf(selectedIndicator)>=0){ //is this in the available indeicators?
+					var index = diffOptsRank[diffOpt].selectedIndicators.indexOf(selectedIndicator); //has it already been selected?
+					if(isSelected && index<0){ //add to selected
 						diffOptsRank[diffOpt].selectedIndicators.push(selectedIndicator);
 					}
-					else if(!isSelected && index>=0){
+					else if(!isSelected && index>=0){ //remove from selected
 						diffOptsRank[diffOpt].selectedIndicators.splice(index,1);
-					}
+					}					
 					diffOptsRank[diffOpt].rank = Math.floor((diffOptsRank[diffOpt].selectedIndicators.length * 100)/diffOptsRank[diffOpt].availIndicators.length);
+					console.log(diffOpt,diffOptsRank[diffOpt]);
 				}
 				if(ranksClusters.indexOf(diffOptsRank[diffOpt].rank)<0){
 					ranksClusters.push(diffOptsRank[diffOpt].rank);
-				}				
+				}
 			}
 			ranksClusters.sort(function(a,b){return b-a;});
 			//console.log('ranksClusters',ranksClusters);
 			var topRankedStrategies=[];
 			for(var diffOpt in diffOptsRank){
-				diffOptsRank[diffOpt].displayRank = ranksClusters.indexOf(diffOptsRank[diffOpt].rank) + 1;
+				diffOptsRank[diffOpt].displayRank = ranksClusters.indexOf(diffOptsRank[diffOpt].rank) + 1; //diffOptsRank[diffOpt].rank
 				if((diffOptsRank[diffOpt].displayRank>0&&diffOptsRank[diffOpt].displayRank<=3) && topRankedStrategies.length<3){
 					topRankedStrategies.push(pflMatrix.diffOptions[diffOpt].title);
 				}

@@ -13,9 +13,9 @@ app.controller("pflMatrixController", function ($scope, pflMatrixService) {
 	$scope.showHelp=function(){
 		$( "#helpDialog" ).dialog({
 			  modal: true,
-			  width: 600,
+			  width: 800,
 			buttons: {
-					Ok: function() {
+					OK: function() {
 					  $( this ).dialog( "close" );
 					}
 				  },
@@ -183,6 +183,9 @@ app.controller("pflMatrixController", function ($scope, pflMatrixService) {
 		
 		var doc = new jsPDF('landscape'); 
 		
+		doc.addFont('ComicSansMS', 'Comic Sans', 'normal');
+		doc.setFont('Comic Sans');
+		
 		// title info
 		y=writePdfLine(doc,x,y,'Guide for Selecting Differentiation Strategies for High Ability Learners',colors.grey);
 		y=writePdfLine(doc,x,y,'Name: '+$scope.userInfo.pflName,colors.grey);
@@ -190,7 +193,7 @@ app.controller("pflMatrixController", function ($scope, pflMatrixService) {
 		y=writePdfLine(doc,x,y,'Date: '+moment(angular.copy($scope.userInfo.pflDate)).format("DD MMM YYYY"),colors.grey);
 		
 		//display suggested strategies
-		var topY=writePdfLine(doc,195,10,'Suggested Differentiation Strategies: ',colors.grey);
+		var topY=writePdfLine(doc,195,10,'Differentiation Strategies: ',colors.grey);
 		for(var i=0;i<$scope.topDiffOpts.length;i++){	
 			doc.ellipse(200, topY-1, 1, 1);		
 			topY=writePdfLine(doc,202,topY,$scope.topDiffOpts[i],colors.black);			

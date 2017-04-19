@@ -55,6 +55,8 @@
 		.matrixTable th > div{
 			-webkit-transform: translate(25px, 51px);
 			-webkit-transform: rotate(315deg);
+			transform: translate(25px, 51px);
+			transform: rotate(315deg);			
 			width:35px;		
 			}
 
@@ -128,26 +130,27 @@ input:checked + .slider:before {
         body {
             font-size:11px !important;
             padding: 10px;
+			font-family: "Comic Sans MS", "Comic Sans", cursive;
         }
     </style>
 </head>
-<body ng-controller="pflMatrixController" ng-app='pflMatrixApp'>
-	<div id="helpDialog" title="Pfl Matrix - Instructions" style="display:none;background-color:beige">
+<body ng-cloak ng-controller="pflMatrixController" ng-app='pflMatrixApp'>
+	<div id="helpDialog" title="Pfl Matrix - Instructions" style="display:none;background-color:beige;font-size:13px;font-family: 'Comic Sans MS', 'Comic Sans', cursive;">
 			<ol ng-show="language=='default_en'">
-			<li>Print a copy of the Brilliant Behaviors to record the behaviors that appear. Use either an individual checklist, group checklist, or a copy of the Guide.</li>
+			<li>Print a copy of the Brilliant Behaviours to record the behaviours that appear. Use either an individual checklist, group checklist, or a copy of the Guide.</li>
 			<li>Record the information required information about the student and activity or activities at the top of the form.</li>
 			<li>Observe a student while she or he is engaged in a challenging activity in an area of strength or interest. Click here to see a description of suitable activities.</li>
-			<li>Put a check to the left of each Behavior the student demonstrates frequently, intensely and consistently.</li>
-			<li>Transfer the student information and behaviors observed from the Brilliant Behaviors form to the Guide online. The Guide will change the Xs to the right of each behavior you check into vs.</li>
+			<li>Put a check to the left of each Brilliant Behaviour the student demonstrates frequently, intensely and consistently.</li>
+			<li>Transfer the student information and behaviours observed from the Brilliant Behaviours form to the Guide online. The Guide will change the Xs to the right of each behaviour you check into <i class="fa fa-check-circle-o" aria-hidden="true"></i>.</li>
 			<li>The Guide will also highlight the differentiation strategies to emphasize for this student when she or he is working in this area of strength or interest.</li>
-			<li>The definition of each strategy will appear when the cursor rests on it. Read the definitions for each of the strategies recommended by the Guide. Do they seem appropriate?</li>
+			<li>The definition of each behaviour and strategy will appear when the cursor rests on it. Read the definitions for each of the strategies recommended by the Guide. Do they seem appropriate?</li>
 		</ol>
 
 			<ol ng-show="language=='kids_en'">
 			<li>Fill in the information at the top of the form.</li>
-			<li>Read the list of Behaviors in the form. Let the cursor rest on the name of a behavior and a description of it will appear. Click here if you want more information about any of them.</li>
-			<li>Do you experience any of those behaviors when you are learning something challenging about a topic you love? Put a check mark (v) in the column to the left of each Behavior that is consistently, intensely true of you while you’re learning something fascinating.</li>
-			<li>Now look at the names of the strategies the Guide is recommending for you. They will be highlighted in green. A brief definition for each strategy will appear if you put your cursor over the name. Click on the name if you want more information and examples. The Guide thinks activities like that involve the strategies highlighted in green will challenge you in ways you’ll like when you are learning about your favorite topic. Do you agree with some or all of what the Guide has recommended?</li>
+			<li>Read the list of Behaviours in the form. Let the cursor rest on the name of a behaviour and a description of it will appear. Click here if you want more information about any of them.</li>
+			<li>Do you experience any of those behaviours when you are learning something challenging about a topic you love? Put a check mark (v) in the column to the left of each Behaviour that is consistently, intensely true of you while you’re learning something fascinating.</li>
+			<li>Now look at the names of the strategies the Guide is recommending for you. They will be highlighted in green. A brief definition for each strategy will appear if you put your cursor over the name. Click on the name if you want more information and examples. The Guide thinks activities like that involve the strategies highlighted in green will challenge you in ways you’ll like when you are learning about your favourite topic. Do you agree with some or all of what the Guide has recommended?</li>
 			<li>Share your Guide and the results with your teacher.</li>			
 			</ol>
 	</div>
@@ -252,7 +255,7 @@ input:checked + .slider:before {
 			<table class="matrixTable" >
 				<tr>
 					<th colspan=23 class="pflDiffGroups">
-						Suggested Differentiation Strategies
+						Differentiation Strategies
 						<ul style="display:inline;">
 							<li style="display:inline;font-size:11px;padding-right:10px;" ng-repeat="diffOpts in topDiffOpts">{{diffOpts}}</li>
 						</ul>
@@ -265,37 +268,37 @@ input:checked + .slider:before {
 					<th colspan=5 class="pflDiffGroups pflProd">Product</th>
 				</tr>
 				<tr>
-					<th>Behaviors</th>
+					<th>Behaviours</th>
 					
-					<th><div><span class="pflDiffTitles pflCont">{{diffOptions.contAbs.title}}</span></div></th>					
-					<th><div><span class="pflDiffTitles pflCont">{{diffOptions.contComp.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflCont">{{diffOptions.extTop.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflCont">{{diffOptions.livLiv.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflCont">{{diffOptions.orgLivVal.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflCont">{{diffOptions.relLiTop.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflCont">{{diffOptions.selSelCont.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.contAbs.description.default_en}}" class="pflDiffTitles pflCont">{{diffOptions.contAbs.title}}</span></div></th>					
+					<th><div><span title="{{diffOptions.contComp.description.default_en}}" class="pflDiffTitles pflCont">{{diffOptions.contComp.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.extTop.description.default_en}}" class="pflDiffTitles pflCont">{{diffOptions.extTop.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.livLiv.description.default_en}}" class="pflDiffTitles pflCont">{{diffOptions.livLiv.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.orgLivVal.description.default_en}}" class="pflDiffTitles pflCont">{{diffOptions.orgLivVal.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.relLiTop.description.default_en}}" class="pflDiffTitles pflCont">{{diffOptions.relLiTop.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.selSelCont.description.default_en}}" class="pflDiffTitles pflCont">{{diffOptions.selSelCont.title}}</span></div></th>
 					
-					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.cmplxThink.title}}</span></div></th>					
-					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.expMeths.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.groupInt.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.indvPurs.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.inqBasLea.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.opEnd.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.pacProc.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.reasRefl.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.selSelProc.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflProc">{{diffOptions.procVariety.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.cmplxThink.description.default_en}}" class="pflDiffTitles pflProc">{{diffOptions.cmplxThink.title}}</span></div></th>					
+					<th><div><span title="{{diffOptions.expMeths.description.default_en}}" class="pflDiffTitles pflProc">{{diffOptions.expMeths.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.groupInt.description.default_en}}" class="pflDiffTitles pflProc">{{diffOptions.groupInt.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.indvPurs.description.default_en}}" class="pflDiffTitles pflProc">{{diffOptions.indvPurs.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.inqBasLea.description.default_en}}" class="pflDiffTitles pflProc">{{diffOptions.inqBasLea.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.opEnd.description.default_en}}" class="pflDiffTitles pflProc">{{diffOptions.opEnd.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.pacProc.description.default_en}}" class="pflDiffTitles pflProc">{{diffOptions.pacProc.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.reasRefl.description.default_en}}" class="pflDiffTitles pflProc">{{diffOptions.reasRefl.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.selSelProc.description.default_en}}" class="pflDiffTitles pflProc">{{diffOptions.selSelProc.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.procVariety.description.default_en}}" class="pflDiffTitles pflProc">{{diffOptions.procVariety.title}}</span></div></th>
 					
-					<th><div><span class="pflDiffTitles pflProd">{{diffOptions.authAud.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflProd">{{diffOptions.feedAssProd.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflProd">{{diffOptions.selSelProd.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflProd">{{diffOptions.transProd.title}}</span></div></th>
-					<th><div><span class="pflDiffTitles pflProd">{{diffOptions.prodVariety.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.authAud.description.default_en}}" class="pflDiffTitles pflProd">{{diffOptions.authAud.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.feedAssProd.description.default_en}}" class="pflDiffTitles pflProd">{{diffOptions.feedAssProd.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.selSelProd.description.default_en}}" class="pflDiffTitles pflProd">{{diffOptions.selSelProd.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.transProd.description.default_en}}" class="pflDiffTitles pflProd">{{diffOptions.transProd.title}}</span></div></th>
+					<th><div><span title="{{diffOptions.prodVariety.description.default_en}}" class="pflDiffTitles pflProd">{{diffOptions.prodVariety.title}}</span></div></th>
 					
 				</tr>
 				<tr ng-repeat="orderedIndic in orderdIndicators">
 					<td title="{{indicators[orderedIndic].descriptions[language]}}" style="text-align:left;border: 0px; font-size:11px;">
-						<input type="checkbox" ng-model="indicators[orderedIndic].isSelected" ng-change="updateRank(indicators[orderedIndic]);">{{indicators[orderedIndic].title}}
+						<input type="checkbox" ng-model="indicators[orderedIndic].isSelected" ng-change="updateRank(indicators[orderedIndic]);" style="margin-right:3px;">{{indicators[orderedIndic].title}}
 					</td>
 					<td class="pflCont">
 						<i ng-show="indicators[orderedIndic].isSelected && setIndicatorLocation(indicators[orderedIndic], diffOptions.contAbs)" class="fa fa-check-circle-o"></i>
@@ -388,7 +391,31 @@ input:checked + .slider:before {
 				</tr>
 				<tr>
 					<td style=" font-size:11px;">Ranking</td>	
-					<td ng-repeat="diffOpt in diffOptions" style="background-color:#eee; font-size:11px;">{{diffOptRankings[diffOpt.id].displayRank}}</td>
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.contAbs.displayRank}}</td>
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.contComp.displayRank}}</td>
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.extTop.displayRank}}</td>
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.livLiv.displayRank}}</td>
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.orgLivVal.displayRank}}</td>
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.relLiTop.displayRank}}</td>
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.selSelCont.displayRank}}</td>
+
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.cmplxThink.displayRank}}</td>
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.expMeths.displayRank}}</td>
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.groupInt.displayRank}}</td>
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.indvPurs.displayRank}}</td>
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.inqBasLea.displayRank}}</td>
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.opEnd.displayRank}}</td>
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.pacProc.displayRank}}</td>					
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.reasRefl.displayRank}}</td>					
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.selSelProc.displayRank}}</td>					
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.procVariety.displayRank}}</td>					
+
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.authAud.displayRank}}</td>					
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.feedAssProd.displayRank}}</td>					
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.selSelProd.displayRank}}</td>					
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.transProd.displayRank}}</td>					
+					<td style="background-color:#eee; font-size:11px;">{{diffOptRankings.prodVariety.displayRank}}</td>					
+					
 				</tr>		
 			</table>		
 		</div>		
