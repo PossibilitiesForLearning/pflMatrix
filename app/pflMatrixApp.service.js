@@ -70,7 +70,7 @@ app.service("pflMatrixService", function ($http, $q) {
 			for(var diffOpt in diffOptsRank){
 				diffOptsRank[diffOpt].displayRank = ranksClusters.indexOf(diffOptsRank[diffOpt].rank) + 1; //diffOptsRank[diffOpt].rank
 				if((diffOptsRank[diffOpt].displayRank>0&&diffOptsRank[diffOpt].displayRank<=3) && topRankedStrategies.length<3){
-					topRankedStrategies.push(pflMatrix.diffOptions[diffOpt].title);
+					topRankedStrategies.push(pflMatrix.diffOptions[diffOpt].id);
 				}
 			}
 			return topRankedStrategies;

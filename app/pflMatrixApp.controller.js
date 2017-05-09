@@ -10,6 +10,15 @@ app.controller("pflMatrixController", function ($scope, pflMatrixService) {
 	$scope.topDiffOpts={}
 	$scope.userInfo={};
 	
+	//for mouse position:
+	var mouseX;
+	var mouseY;
+	$(document).mousemove( function(e) {
+	   mouseX = e.pageX; 
+	   mouseY = e.pageY;
+	}); 
+	
+	
 	$scope.showHelp=function(){
 		$( "#helpDialog" ).dialog({
 			  modal: true,
@@ -53,6 +62,23 @@ app.controller("pflMatrixController", function ($scope, pflMatrixService) {
 		var dataStr=JSON.stringify(userDataForSave);
 		console.log(userDataForSave,dataStr);	
 		downloadFile('pflMatrix.pfl',dataStr);		
+	}
+	
+	$scope.showDef=function(diffObj,elemId){
+		//console.log("#"+diffObj.id,diffObj.descriptions[$scope.language]);
+
+			/*if ($('#'+elemId+'_info').length ) {$('#'+elemId+'_info').show();}	
+			else{
+				$("#"+elemId).append('<div id="'+elemId+'_info" style="position:absolute;top:'+mouseX+'px;left:'+mouseY+'px;border:solid 1px black;">hello?...</div>');
+			}			
+			$('#'+elemId+'_info').fadeIn('fast').delay(3000).fadeOut('slow');*/
+
+			//$('#DivToShow').css({'top':mouseY,'left':mouseX}).fadeIn('slow');
+			
+			$('#defTitle').text(diffObj.title);
+			$('#defInfo').text(diffObj.descriptions[$scope.language]);
+			$('#defInfo').css('color', 'black');
+			$('#defInfo').css('font-size', '11px');
 	}
 	
 	document.getElementById('file-input').addEventListener('change', readSingleFile, false);
@@ -149,31 +175,31 @@ app.controller("pflMatrixController", function ($scope, pflMatrixService) {
 		
 	}
 	
-	var orderedDiffOptsArray=[
-		{id:"contAbs",color:colors.blue, colorRgb:colorsRgb.blue},
-		{id:"contComp",color:colors.blue, colorRgb:colorsRgb.blue},
-		{id:"extTop",color:colors.blue, colorRgb:colorsRgb.blue},
-		{id:"livLiv",color:colors.blue, colorRgb:colorsRgb.blue},
-		{id:"orgLivVal",color:colors.blue, colorRgb:colorsRgb.blue},
-		{id:"relLiTop",color:colors.blue, colorRgb:colorsRgb.blue},
-		{id:"selSelCont",color:colors.blue, colorRgb:colorsRgb.blue},
+	$scope.orderedDiffOptsArray=[
+		{id:"contAbs",color:colors.blue, colorRgb:colorsRgb.blue, htmlTitleClass:'pflCont'},
+		{id:"contComp",color:colors.blue, colorRgb:colorsRgb.blue, htmlTitleClass:'pflCont'},
+		{id:"extTop",color:colors.blue, colorRgb:colorsRgb.blue, htmlTitleClass:'pflCont'},
+		{id:"livLiv",color:colors.blue, colorRgb:colorsRgb.blue, htmlTitleClass:'pflCont'},
+		{id:"orgLivVal",color:colors.blue, colorRgb:colorsRgb.blue, htmlTitleClass:'pflCont'},
+		{id:"relLiTop",color:colors.blue, colorRgb:colorsRgb.blue, htmlTitleClass:'pflCont'},
+		{id:"selSelCont",color:colors.blue, colorRgb:colorsRgb.blue, htmlTitleClass:'pflCont'},
 		
-		{id:"cmplxThink",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue},
-		{id:"expMeths",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue},
-		{id:"groupInt",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue},
-		{id:"indvPurs",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue},
-		{id:"inqBasLea",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue},
-		{id:"opEnd",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue},
-		{id:"pacProc",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue},
-		{id:"reasRefl",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue},
-		{id:"selSelProc",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue},
-		{id:"procVariety",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue},
+		{id:"cmplxThink",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
+		{id:"expMeths",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
+		{id:"groupInt",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
+		{id:"indvPurs",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
+		{id:"inqBasLea",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
+		{id:"opEnd",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
+		{id:"pacProc",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
+		{id:"reasRefl",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
+		{id:"selSelProc",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
+		{id:"procVariety",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
 		
-		{id:"authAud",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue},
-		{id:"feedAssProd",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue},
-		{id:"selSelProd",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue},
-		{id:"transProd",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue},
-		{id:"prodVariety",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue}
+		{id:"authAud",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue, htmlTitleClass:'pflProd'},
+		{id:"feedAssProd",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue, htmlTitleClass:'pflProd'},
+		{id:"selSelProd",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue, htmlTitleClass:'pflProd'},
+		{id:"transProd",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue, htmlTitleClass:'pflProd'},
+		{id:"prodVariety",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue, htmlTitleClass:'pflProd'}
 	];
 	
 	$scope.printPflMatrix=function(){
@@ -209,10 +235,10 @@ app.controller("pflMatrixController", function ($scope, pflMatrixService) {
 		
 		//var i=0;
 		var topY=y+25;
-		for(var i=0;i<orderedDiffOptsArray.length;i++){
-			writePdfText(doc,x+65+i*dx,y+25,$scope.diffOptions[orderedDiffOptsArray[i].id].title,orderedDiffOptsArray[i].color,30);
+		for(var i=0;i<$scope.orderedDiffOptsArray.length;i++){
+			writePdfText(doc,x+65+i*dx,y+25,$scope.diffOptions[$scope.orderedDiffOptsArray[i].id].title,$scope.orderedDiffOptsArray[i].color,30);
 		}
-		var totalDiffs=orderedDiffOptsArray.length;
+		var totalDiffs=$scope.orderedDiffOptsArray.length;
 		
 		//indicators		
 		var i=0;		
@@ -235,15 +261,15 @@ app.controller("pflMatrixController", function ($scope, pflMatrixService) {
 		var i=-1;				
 		for (var pflInd in $scope.indicators) {			
 			doc.line(x+3,y+30+i*dy+1, x+60+(totalDiffs-1)*dx+6, y+30+i*dy+1);	
-			for(var j=0;j<orderedDiffOptsArray.length;j++){
+			for(var j=0;j<$scope.orderedDiffOptsArray.length;j++){
 				//writePdfText(doc,x+65+i*dx,y+25,$scope.diffOptions[orderedDiffOptsArray[i].id].title,orderedDiffOptsArray[i].color,30);
 				fillDiffOptsByIndicator(
 					doc,
 					x+60+j*dx,
 					y+30+(i+1)*dy,
 					$scope.indicators[pflInd],
-					$scope.diffOptions[orderedDiffOptsArray[j].id],
-					orderedDiffOptsArray[j].colorRgb
+					$scope.diffOptions[$scope.orderedDiffOptsArray[j].id],
+					$scope.orderedDiffOptsArray[j].colorRgb
 				);
 				//reset draw colors
 				doc.setLineWidth(0.1);		
