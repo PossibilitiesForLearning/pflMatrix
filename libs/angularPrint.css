@@ -3,13 +3,18 @@
         display:none !important;
 		color:white;
     }
+	
+	.pageBreak	{ display: none; }
 }
-@media print {
+@media print {	
+	
     body *{
         visibility:hidden;
+		padding-top:0mm !important;
     }
     body {
         margin:0mm !important;
+		padding-top:0mm !important;
         -webkit-print-color-adjust:exact;
     }
     .printOnly, .printOnly *{
@@ -47,6 +52,9 @@
         margin:0px !important;
         padding:0px !important;
     }
+	
+	.pageBreak	{ display: block; page-break-before: always; }
+	
     @page { margin:0cm }
     @page :first {
       margin-top:0cm;

@@ -22,17 +22,7 @@
              vertical-align:top;
         } 
 
-        .block {
-            width: 100px;
-            display: inline-block; 
-            vertical-align:top;
-
-        }
-
-        .spacer {
-            padding: 5px;       
-        }
-
+ 
         .saveBar {
             padding: 5px;
             background-color:white;
@@ -352,14 +342,35 @@ input:checked + .slider:before {
 	</div>
 
 <div class="row" style="margin-top:10px;" print-section>
-	<span>Recomended Strategies</span>
-	</br></br>
-	<ul>
-		<li ng-repeat="rec in topDiffOpts"> 	
-			<span style="font-size:10px;font-weight:bold;">{{diffOptions[rec].title}}</span> : <span style="font-size:9px;" >{{diffOptions[rec].descriptions[language]}}</span>
-		</li>
-	</ul>
+	<div ng-show="topDiffOpts.length>0 && topDiffOpts.length<diffOptionsCount">
+		<span>Recommended Strategies</span>
+		</br>
+		<ul>
+			<li ng-repeat="rec in topDiffOpts"> 	
+				<span style="font-size:10px;font-weight:bold;">{{diffOptions[rec].title}}</span> : <span style="font-size:9px;" >{{diffOptions[rec].descriptions[language]}}</span>
+			</li>
+		</ul>	
+	</div>
+	<div ng-show="topDiffOpts.length > 0 && topDiffOpts.length==diffOptionsCount">
+		<span>All differentiation strategies are recommended</span>
+		</br></br>		
+	</div>	
 </div>	
+
+<div class="pageBreak"></div>
+
+<div style="color:white;margin-top:100px;" print-section>
+	</br></br></br></br>
+	<span>Differentiation Strategies</span><br><br>
+	<ul>
+		<li ng-repeat="diffStrat in orderedDiffOptsArray"> 	
+			<span style="font-size:10px;font-weight:bold;">{{diffOptions[diffStrat.id].title}}</span> : <span style="font-size:9px;" >{{diffOptions[diffStrat.id].descriptions[language]}}</span>
+		</li>
+	</ul>	
+</div>
+
+
+
 	</body>
 
 <script src="./libs/jquery.min.js"></script>

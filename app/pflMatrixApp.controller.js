@@ -6,6 +6,7 @@ app.controller("pflMatrixController", function ($scope, pflMatrixService) {
 	$scope.indicators={};
 	$scope.orderdIndicators={};
 	$scope.diffOptions={};
+	$scope.diffOptionsCount=-1;
 	$scope.diffOptRankings={};
 	$scope.topDiffOpts={}
 	$scope.userInfo={};
@@ -111,6 +112,7 @@ app.controller("pflMatrixController", function ($scope, pflMatrixService) {
 		$scope.indicators=angular.copy(pflMatrixService.getIndicatorList());
 		$scope.orderdIndicators=angular.copy(pflMatrixService.getOrderedIndicatorList());
 		$scope.diffOptions=angular.copy(pflMatrixService.getDifferentiationOptions());
+		$scope.diffOptionsCount=Object.keys($scope.diffOptions).length;
 		$scope.diffOptRankings=pflMatrixService.initDifferentiationOptionsRanking();
 		
 	}	
