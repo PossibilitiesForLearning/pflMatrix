@@ -1,8 +1,8 @@
 var pflMatrix={
 	indicators:{
-		ixSH:{id:'ixSH', title:'Humor', dispOrder:0, descriptions:{
+		ixSH:{id:'ixSH', title:'Humour', dispOrder:0, descriptions:{
 							default_en:"Exceptionally keen sense of the comical, the bizarre, or absurd.",
-							kids_en:"I get totally silly about these things. My sense of humor goes wild."
+							kids_en:"I get totally silly about these things. My sense of humour goes wild."
 							}
 		},
 		ixEIC:{id:'ixEIC',title:'Imagination & creativity', dispOrder:1, descriptions:{
@@ -36,7 +36,7 @@ var pflMatrix={
 							}
 		},		
 		ixSCP:{id:'ixSCP',title:'Problem-solving',  dispOrder:7, descriptions:{
-							default_en:"Outst&ing ability to find systematic solutions to problems; is able to invent & monitor many paths to a goal; seeks out challenging problems.",
+							default_en:"Outstanding ability to find systematic solutions to problems; is able to invent & monitor many paths to a goal; seeks out challenging problems.",
 							kids_en:"I love to solve hard, messy problems by inventing & checking lots of different solutions. I live for the challenge!"
 							}
 		},		
@@ -46,13 +46,13 @@ var pflMatrix={
 							}
 		},		
 		ixLE:{id:'ixLE',title:'Learning',  dispOrder:9, descriptions:{
-							default_en:"Extremely able to grasp & use sophisticated new underst&ings quickly & easily.",
-							kids_en:"I love learning the tough stuff. It is much easier for me to learn it is for other kids my age."
+							default_en:"Extremely able to grasp & use sophisticated new understandings quickly & easily.",
+							kids_en:"I love learning the tough stuff. It's much easier for me to learn it than it is for other kids my age."
 							}
 		},		
 		ixAPI:{id:'ixAPI',title:'Interests',  dispOrder:10, descriptions:{
 							default_en:"Advanced, intensely focused curiosity; passionate; may focus on unusual topics; interest is sometimes fleeting but always intense.",
-							kids_en:"I absolutely love this stuff, even if other kids think it is weird."
+							kids_en:"I absolutely love this stuff, even if other kids think it's weird."
 							}
 		},				
 		ixMEC:{id:'ixMEC',title:'Moral & ethical concerns',  dispOrder:11, descriptions:{
@@ -61,8 +61,8 @@ var pflMatrix={
 							}
 		},				
 		ixHMP:{id:'ixHMP',title:'Motivation',  dispOrder:12, descriptions:{
-							default_en:"Persistent, intense need to know, do, feel, create, or underst&.",
-							kids_en:"I want MORE! Once I start I can't shut my mind off. I can&apos;t quit even when I run out of time in class."
+							default_en:"Persistent, intense need to know, do, feel, create, or understand.",
+							kids_en:"I want MORE! Once I start I can't shut my mind off. I can't quit even when I run out of time in class."
 							}
 		}					
 	},
@@ -139,7 +139,7 @@ var pflMatrix={
 		},		
 		reasRefl:{
 			id:"reasRefl",title:"Reasoning & reflection", type: "process", indicators:['ixPIM','ixISA','ixGC','ixRTW','ixSCP','ixMEC'], refId:421, descriptions:{
-						default_en:"Students explain their conclusions & the reasoning that led to them as well as the metacognitive aspect of their thinking. They are encouraged to evaluate both the process & products of their own & others' thinking."
+						default_en:"Students explain their conclusions & the reasoning that led to them as well as the metacognitive aspects of their thinking. They are encouraged to evaluate both the process & products of their own & others' thinking."
 					}
 		},		
 		selSelProc:{

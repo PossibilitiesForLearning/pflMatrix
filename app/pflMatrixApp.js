@@ -1,4 +1,6 @@
-var app = angular.module('pflMatrixApp', []);
+var app = angular.module('pflMatrixApp', ['AngularPrint'])
+
+;
 
 app.config(function() {},
 [
