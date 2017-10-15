@@ -62,7 +62,14 @@ app.controller("pflMatrixController", function ($scope, pflMatrixService) {
 		userDataForSave.indicators=indicatorList;
 		var dataStr=JSON.stringify(userDataForSave);
 		console.log(userDataForSave,dataStr);	
-		downloadFile('pflMatrix.pfl',dataStr);		
+		
+		var fileName=prompt("Please enter your file name:", ($scope.userInfo.pflName+$scope.userInfo.pflGrade+$scope.userInfo.pflDateStr+'PFLMatrix.pfl').replace(/\s/g,''));
+		if (fileName == null || fileName.trim() == "") {
+			//do nothing for now
+		}
+		else {downloadFile(fileName.trim(),dataStr);}
+		
+				
 	}
 	
 	$scope.showDef=function(diffObj,elemId){
@@ -155,6 +162,7 @@ app.controller("pflMatrixController", function ($scope, pflMatrixService) {
 		{id:"orgLivVal",color:colors.blue, colorRgb:colorsRgb.blue, htmlTitleClass:'pflCont'},
 		{id:"relLiTop",color:colors.blue, colorRgb:colorsRgb.blue, htmlTitleClass:'pflCont'},
 		{id:"selSelCont",color:colors.blue, colorRgb:colorsRgb.blue, htmlTitleClass:'pflCont'},
+		{id:"break",color:colors.blue, colorRgb:colorsRgb.blue, htmlTitleClass:'pflCont'},
 		
 		{id:"cmplxThink",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
 		{id:"expMeths",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
@@ -166,12 +174,14 @@ app.controller("pflMatrixController", function ($scope, pflMatrixService) {
 		{id:"reasRefl",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
 		{id:"selSelProc",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
 		{id:"procVariety",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
+		{id:"break",color:colors.cadetblue, colorRgb:colorsRgb.cadetblue, htmlTitleClass:'pflProc'},
 		
 		{id:"authAud",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue, htmlTitleClass:'pflProd'},
 		{id:"feedAssProd",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue, htmlTitleClass:'pflProd'},
 		{id:"selSelProd",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue, htmlTitleClass:'pflProd'},
 		{id:"transProd",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue, htmlTitleClass:'pflProd'},
-		{id:"prodVariety",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue, htmlTitleClass:'pflProd'}
+		{id:"prodVariety",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue, htmlTitleClass:'pflProd'},
+		{id:"break",color:colors.dodgerblue, colorRgb:colorsRgb.dodgerblue, htmlTitleClass:'pflProd'}
 	];
 	
 	
